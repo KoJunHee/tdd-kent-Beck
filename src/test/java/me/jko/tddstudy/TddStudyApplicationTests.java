@@ -2,12 +2,7 @@ package me.jko.tddstudy;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-// TODO 1. multiplication : DONE
-// TODO 2. equality : DONE
-// TODO 3. Franc multiplication
+import static org.junit.jupiter.api.Assertions.*;
 
 class TddStudyApplicationTests {
 
@@ -25,9 +20,11 @@ class TddStudyApplicationTests {
         assertEquals(new Franc(15), five.times(3));
     }
 
-
     @Test
     void testEquality() {
         assertTrue(new Dollar(5).equals(new Dollar(5)));
+        assertFalse(new Dollar(5).equals(new Dollar(6)));
+        assertTrue(new Franc(5).equals(new Franc(5)));
+        assertFalse(new Franc(5).equals(new Franc(6)));
     }
 }
