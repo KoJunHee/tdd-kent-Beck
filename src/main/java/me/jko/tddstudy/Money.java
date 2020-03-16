@@ -27,15 +27,21 @@ class Money implements Expression {
         return amount == money.amount && currency().equals(money.currency());
     }
 
-    Money times(int multiplier) {
+    public Money times(int multiplier) {
         return new Money(amount * multiplier, currency);
     }
 
-    Expression plus(Money addend){
-        return new Money(amount + addend.amount, currency);
+    public Expression plus(Expression addend){
+        return new Sum(this, addend);
     }
 
     public String toString(){
         return amount + " " + currency;
+    }
+
+    public Money reduce(Bank bank, String to){
+        int rate = bank.rate(currency,to);
+
+        return new Money(amount / rate, to);
     }
 }
